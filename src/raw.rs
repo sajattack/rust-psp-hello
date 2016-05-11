@@ -1,8 +1,8 @@
 #[repr(C)]
 pub struct SceModuleInfo {
     pub mod_attribute: u16,
-    pub mod_version: [u8, ..2],
-    pub mod_name: [i8, ..27],
+    pub mod_version: [u8; 2],
+    pub mod_name: [i8; 27],
     pub terminal: i8,
     pub gp_value: *const (),
     pub ent_top: *const (),
@@ -11,6 +11,9 @@ pub struct SceModuleInfo {
     pub stub_end: *const ()
 }
 
+// yeah whatevs
+unsafe impl ::lang::Sync for SceModuleInfo {}
+
 #[repr(u16)]
 pub enum Mode {
     USER   = 0,
@@ -18,7 +21,7 @@ pub enum Mode {
 }
 
 // XXX - Find a way to also accept a name
-macro_rules! PSP_MODULE_INFO (
+macro_rules! PSP_MODULE_INFO {
     ($mode:expr, $major_version:expr, $minor_version:expr) => (
         extern {
             static _gp: *const i8;
@@ -35,7 +38,7 @@ macro_rules! PSP_MODULE_INFO (
         pub static module_info: ::raw::SceModuleInfo = ::raw::SceModuleInfo {
             mod_attribute: $mode as u16,
             mod_version: [$major_version, $minor_version],
-            mod_name: [0, ..27], // XXX - should be able to specify this...
+            mod_name: [0; 27], // XXX - should be able to specify this...
             terminal: 0,
             gp_value: &_gp as *const _ as *const (),
             ent_top: &__lib_ent_top as *const _ as *const (),
@@ -44,4 +47,4 @@ macro_rules! PSP_MODULE_INFO (
             stub_end: &__lib_stub_bottom as *const _ as *const (),
         };
     )
-)
+}

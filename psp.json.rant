@@ -1,4 +1,5 @@
 {
+    // n32:64? aren't there 64-bit native ints?
     "data-layout": "e-m:m-p:32:32:32-i8:8:32-i16:16:32-i64:64-n32-S64",
     "llvm-target": "mipsallegrexel-unknown-psp-elf",
     "target-endian": "little",
@@ -7,18 +8,19 @@
     "arch": "mips",
     "os": "psp",
     "cpu": "mips32",
-    "features": "-mips32,+noabicalls",
+    "features": "-mips32,-noabicalls",
+    // No longer used:
     "morestack": false,
     "no-compiler-rt": true,
     "executables": true,
     "linker": "psp-gcc",
+    // This is a typo, and wrong for 2 other reasons
     "position_independent_executables": true,
     "function-sections": false,
     "relocation-model": "static",
-    "linker-is-gnu": true,
+    // _ -> -
+    "linker_is_gnu": true,
     "pre-link-args": [
-        "-mno-abicalls",
-        "-mabi=eabi",
         "-fPIC",
         "-L$PSPSDK_LIBPATH",
         "-specs=$PSPSDK_LIBPATH/prxspecs",

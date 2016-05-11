@@ -2,11 +2,11 @@
 
 
 #[lang = "copy"]
-trait Copy {}
+pub trait Copy {}
 #[lang = "sized"]
-trait Sized {}
+pub trait Sized {}
 #[lang = "sync"]
-trait Sync {}
+pub unsafe trait Sync {}
 
 extern "rust-intrinsic" {
     pub fn transmute<F, T>(from: F) -> T;
