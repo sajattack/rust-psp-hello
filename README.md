@@ -6,6 +6,10 @@ This requires a patched psp-binutils to remove the restriction on ABI mismatches
 make
 ```
 
-This will give you an `EBOOT.PBP` which you can just copy over to your PSP and run as usual. Alternatively you can run it with ppsspp by typing `make run`.
+This will give you an `EBOOT.PBP` which you can just copy over to your PSP and run as usual. 
+
+Or run it with PPSSPP:
+
+```PPSSPPSDL EBOOT.PBP```
 
 ![I'm making a note here huge success](https://i.imgur.com/gUObVat.png)
