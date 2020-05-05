@@ -13,7 +13,6 @@ const VERSION_MINOR: u8 = 1;
 
 PSP_MODULE_INFO!(raw::Mode::USER, VERSION_MAJOR, VERSION_MINOR);
 
-
 #[no_mangle]
 pub extern "C" fn main() {
     utils::debug_init();

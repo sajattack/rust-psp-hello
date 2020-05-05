@@ -1,0 +1,12 @@
+diff -Naur /tmp/binutils-orig/binutils-2.34/bfd/elfxx-mips.c /tmp/binutils/binutils-2.34/bfd/elfxx-mips.c
+--- /tmp/binutils-orig/binutils-2.34/bfd/elfxx-mips.c	2020-05-05 08:35:43.083838058 -0700
++++ /tmp/binutils/binutils-2.34/bfd/elfxx-mips.c	2020-05-05 08:34:45.600389601 -0700
+@@ -15447,7 +15447,7 @@
+ 	     ibfd,
+ 	     elf_mips_abi_name (ibfd),
+ 	     elf_mips_abi_name (obfd));
+-	  ok = FALSE;
++	 // ok = FALSE;
+ 	}
+       new_flags &= ~EF_MIPS_ABI;
+       old_flags &= ~EF_MIPS_ABI;

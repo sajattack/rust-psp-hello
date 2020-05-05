@@ -1,0 +1,6 @@
+[build]
+rustflags = [
+    "-C", "link-arg=-L/usr/psp/sdk/lib/",
+    "-C", "link-arg=-L/usr/psp/lib/",
+    "-C", "link-arg=-L/usr/lib/gcc/psp/9.3.0/"
+]

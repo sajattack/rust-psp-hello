@@ -7,6 +7,8 @@ pub trait Copy {}
 pub trait Sized {}
 #[lang = "sync"]
 pub unsafe trait Sync {}
+#[lang = "freeze"]
+pub unsafe trait Freeze {}
 
 extern "rust-intrinsic" {
     pub fn transmute<F, T>(from: F) -> T;
