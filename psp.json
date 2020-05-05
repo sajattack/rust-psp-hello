@@ -15,15 +15,15 @@
     "executables": true,
     "linker": "psp-gcc",
     "linker-flavor": "gcc",
-    "position_independent_executables": false,
+    "position_independent_executables": true,
     "relocation-model": "static",
     "linker-is-gnu": true,
     "pre-link-args": {"gcc": 
       [
           "-L/usr/psp/sdk/lib",
-          "-T./elf_mipsallegrexel_psp.x",
-          "src/module.s",
-          "/usr/psp/sdk/include/pspstub.s"
+          "-specs=/usr/psp/sdk/lib/prxspecs",
+          "-Wl,-q,-Tlinkfile.prx",
+          "src/module.s"
       ]
     }
 }

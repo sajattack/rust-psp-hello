@@ -110,10 +110,12 @@ ifeq ($(BUILD_DEBUG),1)
 $(TARGET).elf:
 	$(CARGO) xbuild --target=./psp.json
 	cp $(RUST_DEBUG_ELF) $(TARGET).elf
+	$(FIXUP) $(TARGET).elf
 else
 $(TARGET).elf:
 	$(CARGO) xbuild --target=./psp.json --release
 	cp $(RUST_RELEASE_ELF) $(TARGET).elf
+	$(FIXUP) $(TARGET).elf
 endif
 	
 $(PSP_EBOOT_SFO): 
@@ -143,7 +145,7 @@ endif
 	psp-build-exports -b $< > $@
 
 clean: 
-	-rm -f $(FINAL_TARGET) $(EXTRA_CLEAN) $(OBJS) $(PSP_EBOOT_SFO) $(PSP_EBOOT) $(EXTRA_TARGETS)
+	-rm -f $(TARGET).elf $(TARGET).prx $(FINAL_TARGET) $(EXTRA_CLEAN) $(OBJS) $(PSP_EBOOT_SFO) $(PSP_EBOOT) $(EXTRA_TARGETS)
 	-rm -rf target
 
 rebuild: clean all

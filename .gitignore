@@ -7,3 +7,5 @@ target/
 .DS_Store
 Cargo.lock
 *.swp
+*.PBP
+*.SFO
