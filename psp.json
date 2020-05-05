@@ -1,0 +1,29 @@
+{
+    "data-layout": "e-m:m-p:32:32:32-i8:8:32-i16:16:32-i64:64-n32-S64",
+    "llvm-target": "mipsel-none-elf",
+    "target-endian": "little",
+    "target-word-size": "32",
+    "target-pointer-width": "32",
+    "target-c-int-width": "32",
+    "arch": "mips",
+    "cpu": "mips2",
+    "os": "none",
+    "panic_strategy": "abort",
+    "features": "+mips2,+noabicalls",
+    "morestack": false,
+    "no-compiler-rt": true,
+    "executables": true,
+    "linker": "psp-gcc",
+    "linker-flavor": "gcc",
+    "position_independent_executables": false,
+    "relocation-model": "static",
+    "linker-is-gnu": true,
+    "pre-link-args": {"gcc": 
+      [
+          "-L/usr/psp/sdk/lib",
+          "-T./elf_mipsallegrexel_psp.x",
+          "src/module.s",
+          "/usr/psp/sdk/include/pspstub.s"
+      ]
+    }
+}
